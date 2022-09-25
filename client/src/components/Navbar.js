@@ -7,7 +7,7 @@ export default function Navbar() {
                 Password Manager
             </Link>
             <ul>
-                {/* <CustomLink to="/keep">Keep</CustomLink> */}
+                <CustomLink to="/add">Add</CustomLink>
                 {/* <CustomLink to="/retrieve">Retrieve</CustomLink> */}
             </ul>
         </nav>
