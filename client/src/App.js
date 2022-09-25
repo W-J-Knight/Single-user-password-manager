@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import { Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
 import Addpassword from './pages/Addpassword';
+import GetPassword from './pages/GetPassword';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/add" element={<Addpassword />} />
+        <Route path="/get" element={<GetPassword />} />
       </Routes>
 
 

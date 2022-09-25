@@ -8,7 +8,7 @@ export default function Navbar() {
             </Link>
             <ul>
                 <CustomLink to="/add">Add</CustomLink>
-                {/* <CustomLink to="/retrieve">Retrieve</CustomLink> */}
+                <CustomLink to="/get">Retrieve</CustomLink>
             </ul>
         </nav>
     )
