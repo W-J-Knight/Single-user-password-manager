@@ -6,7 +6,7 @@ import Home from "./pages/Home"
 import Addpassword from './pages/Addpassword';
 import GetPassword from './pages/GetPassword';
 import DeletePassword from './pages/DeletePassword';
-
+import UpdatedPassWord from './pages/UpdatedPassword';
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
         <Route path="/add" element={<Addpassword />} />
         <Route path="/get" element={<GetPassword />} />
         <Route path="/delete" element={<DeletePassword />} />
+        <Route path="/update" element={<UpdatedPassWord />} />
       </Routes>
 
 

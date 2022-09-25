@@ -24,7 +24,7 @@ function GetModal({ closeModal, title, uncryptedPassword, id, iv }) {
         <div className="modal_sytle">
             <div className="overlay_style">
                 <div className="info">
-                    <h1>{title}</h1>
+                    <h3>{title}</h3>
                     <p>
                         Password is </p><p className="bold">{showPassword}</p>
                     
