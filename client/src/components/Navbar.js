@@ -22,6 +22,7 @@ export default function NewNavbar() {
             <ul>
                 <CustomLink to="/add">Add</CustomLink>
                 <CustomLink to="/get">Retrieve</CustomLink>
+                <CustomLink to="/delete">Delete</CustomLink>
             </ul>
             </div>
             </Collapse>

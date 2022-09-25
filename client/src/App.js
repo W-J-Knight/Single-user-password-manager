@@ -5,6 +5,8 @@ import { Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
 import Addpassword from './pages/Addpassword';
 import GetPassword from './pages/GetPassword';
+import DeletePassword from './pages/DeletePassword';
+
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/add" element={<Addpassword />} />
         <Route path="/get" element={<GetPassword />} />
+        <Route path="/delete" element={<DeletePassword />} />
       </Routes>
 
 
