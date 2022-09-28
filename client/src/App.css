@@ -4,11 +4,19 @@
 
 body {
   margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 .container {
-  margin: 1rem;
+  margin: 0;
+  padding: 0;
   text-align: center;
+  width: 100%;
+}
+.form{ 
+  padding-top: 1rem;
+  width: 100%;
 }
 
 .nav {
@@ -23,7 +31,7 @@ body {
 }
 
 .site-title {
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
 .nav ul {
@@ -63,7 +71,8 @@ button {
 }
 
 .password {
-  width: 400px;
+  /* width: 400px; */
+  width: 20rem;
   height: 70px;
   background-color: black;
   border-radius: 7px;
@@ -71,7 +80,8 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
+  margin: 0;
+  margin-bottom: .25rem;
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
@@ -96,7 +106,7 @@ button {
   top: 30%;
   background-color: rgba(64, 62, 62, .7);
   z-index: 1000;
-  width: 400px;
+  width: 20rem;
   display: flex;
 }
 .overlay_style{
@@ -105,5 +115,5 @@ button {
   color:yELLOW;
   background-color:rgba(64, 62, 62, 0.9);
   z-index: 1000;
-  width: 400px;
+  width: 20rem;;
 }
