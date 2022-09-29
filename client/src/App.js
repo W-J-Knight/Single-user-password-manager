@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import Navbar from './components/Navbar'
+import NewNavbar from './components/NewNavbar'
 import { Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
 import Addpassword from './pages/Addpassword';
@@ -11,7 +11,7 @@ import UpdatedPassWord from './pages/UpdatedPassword';
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <NewNavbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/add" element={<Addpassword />} />
