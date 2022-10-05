@@ -12,7 +12,9 @@ const cors = require("cors");
 // by set and port vari
 const PORT = 3001;
 
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:3000"
+}));
 app.use(express.json());
 
 // make an connection to the database
