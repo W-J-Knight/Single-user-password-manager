@@ -19,8 +19,8 @@ function Addpassword() {
     };
     const [password, setPassword] = useState("");
     const [title, setTitle] = useState("");
-    const addPassword = () => {
-        Axios.post("http://localhost:3001/addpassword", {
+    const addPassword = (title, password) => {
+        Axios.post("http://localhost:3001/passwords", {
             password: password,
             title: title,
         });
@@ -44,7 +44,7 @@ function Addpassword() {
         }
         if (!password || password.length === 0 || password == 0)
             newErrors.password = "Password must betweem8 to 20 character";
-        else if (password < 8 || password > 20)
+        else if (password.length < 8 || password.length > 20)
             newErrors.password =
                 "Password to the site between 8 to 20 character";
 
@@ -59,9 +59,10 @@ function Addpassword() {
             console.log(formErrors);
         }
         if (Object.keys(formErrors).length === 0) {
+            const { title, password} = form;
             console.log(form);
             console.log("form submitted");
-            addPassword()
+            addPassword(title, password)
             refreshPage()
         }
     };

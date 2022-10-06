@@ -1,11 +1,9 @@
-// import our function encryption and decryption
 const mysql = require("mysql");
+// import our function encryption and decryption
 const { encrypt, decrypt } = require("../helper/EncryptionHandler");
 const express = require("express");
 let passwordRouter = express.Router();
-const cors = require("cors");
-const app = express();
-app.use(cors({ origin: "http://127.0.0.1:3000", }));
+
 
 const db = mysql.createConnection({
     // the own name of the database
@@ -50,16 +48,18 @@ passwordRouter
     });
 
 passwordRouter
-    .route("/:Id")
+    .route("/:id")
     //82-93 updatepassword
     .put((req, res) => {
         //const id = req.body.id;
         //const password = req.body.password;
-        const { password, id } = req.body;
+        // const { password, id } = req.body;
+        const updateId = req.params.id;
+        const { password } = req.body;
         const passwordEncrpted = encrypt(password);
         db.query(
             "UPDATE Passwords SET password = ?, iv = ? WHERE id = ?",
-            [passwordEncrpted.password, passwordEncrpted.iv, id],
+            [passwordEncrpted.password, passwordEncrpted.iv, updateId],
             (err, result) => {
                 if (err) {
                     console.log(err);
@@ -81,8 +81,11 @@ passwordRouter
         });
     });
 
-// app.post("/decryptpassword", (req, res) => {
-//     res.send(decrypt(req.body));
-// });
+passwordRouter
+    .route("/decrypt")
+    //"/decryptpassword"
+    .post((req, res) => {
+        res.send(decrypt(req.body));
+    });
 
 module.exports = passwordRouter;

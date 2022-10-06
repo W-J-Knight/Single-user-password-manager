@@ -12,14 +12,8 @@ function DeleteModal({
 }) {
     const [showPassword, setShowPassword] = useState("");
 
-    useEffect(() => {
-        Axios.get("http://localhost:3001/showpasswords").then((response) => {
-            showPassword(response.data);
-        });
-    });
-
     const decryptPassword = (encryption, iv) => {
-        Axios.post("http://localhost:3001/decryptpassword", {
+        Axios.post("http://localhost:3001/passwords/decrypt", {
             password: encryption,
             iv: iv,
         }).then((response) => {
@@ -28,7 +22,7 @@ function DeleteModal({
     };
 
     const deletePassword = (encryption, iv) => {
-        Axios.delete(`http://localhost:3001/deletepassword/${id}`).then(
+        Axios.delete(`http://localhost:3001/passwords/${id}`).then(
             (response) => {
                 setPasswordList(
                     passwordList.filter((val) => {

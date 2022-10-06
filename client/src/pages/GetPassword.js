@@ -11,13 +11,15 @@ function GetPassword() {
     const [iv, setIv] = useState("");
     const [openModal, setOpenModel] = useState(false);
     useEffect(() => {
-        Axios.get("http://localhost:3001/showpasswords").then((response) => {
+        Axios.get("http://localhost:3001/passwords").then((response) => {
+            console.log(response.data)
             setPasswordList(response.data);
         });
     }, []);
 
     return (
-        <>
+        <>  
+            {/* <p>{{ }}</p> */}
             <div className="Passwords">
                 {openModal && (
                     <GetModal

@@ -28,13 +28,9 @@ function UpdateModal({
                 [field]: null,
             });
     };
-    // useEffect(() => {
-    //     Axios.get("http://localhost:3001/showpasswords").then((response) => {
-    //         showPassword(response.data);
-    //     });
-    // });
+
     const decryptPassword = (encryption, iv) => {
-        Axios.post("http://localhost:3001/decryptpassword", {
+        Axios.post("http://localhost:3001/passwords/decrypt", {
             password: encryption,
             iv: iv,
         }).then((response) => {
@@ -47,9 +43,9 @@ function UpdateModal({
     const updatePassword = (password, id) => {
         console.log(password);
         console.log(id);
-        Axios.put("http://localhost:3001/updatepassword", {
+        Axios.put(`http://localhost:3001/passwords/${id}`, {
             password: password,
-            id: id,
+            // id: id,
         }).then((response) => {
             // decryptPassword(password, iv);
             setPasswordList(
@@ -68,19 +64,20 @@ function UpdateModal({
             decryptPassword(password, iv);
 
             closeModal(false);
-          refreshPage()
+            //   refreshPage()
         });
     };
     const validateForm = () => {
-        console.log(`Form ${form}`)
+        console.log(`Form ${form}`);
         const { newPassword } = form;
         console.log(`validateForm ${newPassword}`);
         const newErrors = {};
-        if (!newPassword || newPassword.length === 0 || newPassword == 0)
-            newErrors.newPassword = "Password must betweem8 to 20 character";
-        else if (8 > newPassword)
+        if (!newPassword || newPassword.length === 0 || newPassword == 0) {
+            newErrors.newPassword = "Password must between 8 to 20 character";
+        } else if (newPassword.length < 8) {
             newErrors.newPassword =
                 "Password to the site between 8 to 20 character";
+        }
 
         return newErrors;
     };
@@ -89,12 +86,18 @@ function UpdateModal({
         const formErrors = validateForm();
         if (Object.keys(formErrors).length > 0) {
             setErrors(formErrors);
-            console.log(formErrors);
+            console.log("formErrors" + formErrors);
+            console.log(
+                "Object.keys(formErrors).length " +
+                    Object.keys(formErrors).length
+            );
         }
         if (Object.keys(formErrors).length === 0) {
             const { newPassword } = form;
             console.log(`Form ${form}`);
             // setNewPassword(({ newPassword} = form));
+            console.log(newPassword);
+            console.log(id);
             updatePassword(newPassword, id);
         }
     };
@@ -106,8 +109,8 @@ function UpdateModal({
             <div className="overlay_style">
                 <div className="info">
                     <h3>{title}</h3>
-                    <p>Password is </p>
-                    <p className="bold">{showPassword}</p>
+                    {/* <p>Password is </p>
+                    <p className="bold">{showPassword}</p> */}
                     <Form>
                         <Form.Group
                             as={Row}
@@ -122,7 +125,7 @@ function UpdateModal({
                             <Col className="col-sm-8">
                                 <Form.Control
                                     maxLength={20}
-                                    placeholder="ex. password1234"
+                                    placeholder={showPassword}
                                     value={form.newPassword}
                                     onChange={(event) => {
                                         setField(

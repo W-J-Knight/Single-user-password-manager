@@ -10,7 +10,7 @@ function UpdatedPassWord() {
   const [iv, setIv] = useState("");
   const [openModal, setOpenModel] = useState(false);
   useEffect(() => {
-      Axios.get("http://localhost:3001/showpasswords").then((response) => {
+      Axios.get("http://localhost:3001/passwords").then((response) => {
           setPasswordList(response.data);
       });
   }, []);

@@ -5,19 +5,13 @@ function GetModal({ closeModal, title, uncryptedPassword, id, iv }) {
     const [showPassword, setShowPassword] = useState("");
 
     const decryptPassword = (encryption, iv) => {
-        Axios.post("http://localhost:3001/decryptpassword", {
+        Axios.post("http://localhost:3001/passwords/decrypt", {
             password: encryption,
             iv: iv,
         }).then((response) => {
             setShowPassword(response.data);
         });
     };
-    useEffect(() => {
-        Axios.get("http://localhost:3001/showpasswords").then((response) => {
-            decryptPassword(uncryptedPassword, iv);
-    
-        });
-    });
 
     decryptPassword(uncryptedPassword, iv);
     return (
